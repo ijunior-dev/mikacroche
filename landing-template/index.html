@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{META_TITLE}}</title>
+  <meta name="description" content="{{META_DESC}}">
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="{{COMPANY_NAME}}">
+  <meta property="og:description" content="{{META_DESC}}">
+  <meta property="og:type"        content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Icons & Swiper CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // ↓ Substituir pelos valores do CONFIG (seção 3. VISUAL)
+            primary: { DEFAULT: '{{PRIMARY_COLOR}}', light: '{{PRIMARY_COLOR}}cc', dark: '{{PRIMARY_COLOR}}aa' },
+            accent:  '{{ACCENT_COLOR}}',
+            wa:      '#25D366',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "{{SCHEMA_TYPE}}",
+        "name": "{{COMPANY_NAME}}",
+        "description": "{{NICHE}} em {{CITY}}",
+        "telephone": "{{PHONE_DISPLAY}}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ADDRESS}}",
+          "addressLocality": "{{CITY}}",
+          "addressRegion": "{{STATE}}",
+          "addressCountry": "BR"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "{{FAQ_1_Q}}",
+            "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_1_A}}" }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="font-sans bg-white text-gray-800 antialiased">
+
+<!-- ══ SKIP LINK ══════════════════════════════════════════ -->
+<a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-accent text-white px-4 py-2 rounded z-50">
+  Ir para o conteúdo principal
+</a>
+
+<!-- ══ NAVBAR ═════════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50" role="banner">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2.5 shrink-0">
+      <div class="w-9 h-9 bg-accent rounded-lg flex items-center justify-center">
+        <i class="fas {{BRAND_ICON}} text-white text-sm"></i>
+      </div>
+      <span class="nav-brand font-black text-lg text-white tracking-tight leading-none">
+        {{COMPANY_NAME_LINE1}}<br><span class="text-accent">{{COMPANY_NAME_LINE2}}</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-7" aria-label="Menu principal">
+      <a href="#diferenciais"  class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Diferenciais</a>
+      <a href="#servicos"      class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">{{NAV_PRODUCTS}}</a>
+      <a href="#como-funciona" class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Como Funciona</a>
+      <a href="#depoimentos"   class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Clientes</a>
+      <a href="#formulario"    class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Contato</a>
+    </nav>
+
+    <!-- CTA + hamburger -->
+    <div class="flex items-center gap-3">
+      <a data-wa data-wa-msg="{{CTA_PRIMARY_MSG}}"
+         class="hidden sm:flex items-center gap-1.5 bg-wa text-white font-semibold px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-opacity">
+        <i class="fab fa-whatsapp text-base"></i> WhatsApp
+      </a>
+      <a data-wa class="sm:hidden text-wa text-2xl"><i class="fab fa-whatsapp"></i></a>
+      <button id="menu-toggle" class="md:hidden text-white p-1.5 rounded-lg" aria-label="Abrir menu" aria-expanded="false">
+        <i id="menu-icon" class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-white/10">
+    <nav class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-1">
+      <a href="#diferenciais"  class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">Diferenciais</a>
+      <a href="#servicos"      class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">{{NAV_PRODUCTS}}</a>
+      <a href="#como-funciona" class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">Como Funciona</a>
+      <a href="#depoimentos"   class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">Clientes</a>
+      <a href="#formulario"    class="text-white/80 hover:text-white font-medium py-2.5">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ HERO ═══════════════════════════════════════════════ -->
+<section id="hero" class="relative min-h-screen flex items-center pt-20">
+  <div class="absolute inset-0 z-0">
+    <img src="{{HERO_IMAGE_URL}}" alt="{{NICHE}} — {{COMPANY_NAME}}"
+         class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/92 via-primary/70 to-primary/30"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 py-20 w-full">
+    <div class="max-w-2xl">
+
+      <span class="inline-block bg-accent/20 text-accent border border-accent/30 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+        {{HERO_LABEL}}
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] mb-5">
+        {{HERO_HEADLINE}} <span class="text-accent">{{HERO_HEADLINE_ACCENT}}</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-white/80 mb-8 leading-relaxed">
+        {{HERO_SUBHEADLINE}}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-10">
+        <a data-wa data-wa-msg="{{CTA_PRIMARY_MSG}}"
+           class="flex items-center justify-center gap-2 bg-wa text-white font-bold text-base px-7 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-green-900/30">
+          <i class="fab fa-whatsapp text-xl"></i>
+          {{CTA_PRIMARY_TEXT}}
+        </a>
+        <a href="#servicos"
+           class="flex items-center justify-center gap-2 bg-white/10 border border-white/25 text-white font-semibold text-base px-7 py-4 rounded-xl hover:bg-white/20 transition-colors backdrop-blur-sm">
+          {{CTA_SECONDARY_TEXT}}
+          <i class="fas fa-arrow-down text-sm"></i>
+        </a>
+      </div>
+
+      <!-- Badges -->
+      <div class="flex flex-wrap gap-5">
+        <div class="flex items-center gap-2 text-white/80 text-sm">
+          <i class="fas fa-star text-accent"></i>
+          <span>{{BADGE_1}}</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/80 text-sm">
+          <i class="fas fa-shield-halved text-accent"></i>
+          <span>{{BADGE_2}}</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/80 text-sm">
+          <i class="fas fa-star text-accent"></i>
+          <span>{{BADGE_3}}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIFERENCIAIS ════════════════════════════════════════ -->
+<section id="diferenciais" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">{{DIFF_SECTION_TITLE}}</h2>
+      <p class="text-gray-500 text-lg max-w-xl mx-auto">{{DIFF_SECTION_SUB}}</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+      <!-- Diferencial 1 -->
+      <div class="reveal bg-white rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas {{DIFF_1_ICON}} text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">{{DIFF_1_TITLE}}</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">{{DIFF_1_DESC}}</p>
+      </div>
+
+      <!-- Diferencial 2 -->
+      <div class="reveal bg-white rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas {{DIFF_2_ICON}} text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">{{DIFF_2_TITLE}}</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">{{DIFF_2_DESC}}</p>
+      </div>
+
+      <!-- Diferencial 3 -->
+      <div class="reveal bg-white rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas {{DIFF_3_ICON}} text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">{{DIFF_3_TITLE}}</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">{{DIFF_3_DESC}}</p>
+      </div>
+
+      <!-- Diferencial 4 -->
+      <div class="reveal bg-white rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas {{DIFF_4_ICON}} text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">{{DIFF_4_TITLE}}</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">{{DIFF_4_DESC}}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRODUTOS / SERVIÇOS ════════════════════════════════ -->
+<section id="servicos" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-10 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">{{PRODUCTS_TITLE}}</h2>
+      <p class="text-gray-500 text-lg">{{PRODUCTS_SUB}}</p>
+    </div>
+
+    <!-- Filtros: adicionar/remover <button> conforme categorias do CONFIG -->
+    <div class="flex flex-wrap justify-center gap-3 mb-8 reveal">
+      <button class="filter-btn active px-5 py-2 rounded-full border border-primary/20 text-sm font-semibold text-primary" data-filter="todos">Todos</button>
+      <!-- {{FILTER_BUTTONS}} — Claude gera um <button> por categoria -->
+    </div>
+
+    <!-- Cards: replicar o bloco abaixo para cada produto/serviço do CONFIG -->
+    <div class="products-scroll">
+
+      <!-- PRODUTO 1 ─── copiar e ajustar para cada item -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="{{PROD_1_CATEGORY}}">
+        <div class="relative overflow-hidden h-52">
+          <img src="{{PROD_1_IMAGE}}" alt="{{PROD_1_NAME}}" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">{{PROD_1_CATEGORY_LABEL}}</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">{{PROD_1_NAME}}</h3>
+          <p class="text-gray-500 text-sm mb-4">{{PROD_1_DESC}}</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="{{PROD_1_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="{{PROD_1_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTO 2 -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="{{PROD_2_CATEGORY}}">
+        <div class="relative overflow-hidden h-52">
+          <img src="{{PROD_2_IMAGE}}" alt="{{PROD_2_NAME}}" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">{{PROD_2_CATEGORY_LABEL}}</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">{{PROD_2_NAME}}</h3>
+          <p class="text-gray-500 text-sm mb-4">{{PROD_2_DESC}}</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="{{PROD_2_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="{{PROD_2_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTO 3 -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="{{PROD_3_CATEGORY}}">
+        <div class="relative overflow-hidden h-52">
+          <img src="{{PROD_3_IMAGE}}" alt="{{PROD_3_NAME}}" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">{{PROD_3_CATEGORY_LABEL}}</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">{{PROD_3_NAME}}</h3>
+          <p class="text-gray-500 text-sm mb-4">{{PROD_3_DESC}}</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="{{PROD_3_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="{{PROD_3_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTO 4 -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="{{PROD_4_CATEGORY}}">
+        <div class="relative overflow-hidden h-52">
+          <img src="{{PROD_4_IMAGE}}" alt="{{PROD_4_NAME}}" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">{{PROD_4_CATEGORY_LABEL}}</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">{{PROD_4_NAME}}</h3>
+          <p class="text-gray-500 text-sm mb-4">{{PROD_4_DESC}}</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="{{PROD_4_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="{{PROD_4_WA_MSG}}"
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMO FUNCIONA ═══════════════════════════════════════ -->
+<section id="como-funciona" class="py-20 bg-primary">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">{{STEPS_TITLE}}</h2>
+      <p class="text-white/60 text-lg">{{STEPS_SUB}}</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+      <div class="reveal text-center lg:relative">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas {{STEP_1_ICON}} text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">01</div>
+        <h3 class="text-white font-bold text-lg mb-2">{{STEP_1_TITLE}}</h3>
+        <p class="text-white/60 text-sm leading-relaxed">{{STEP_1_DESC}}</p>
+        <div class="hidden lg:block step-connector"></div>
+      </div>
+
+      <div class="reveal text-center lg:relative">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas {{STEP_2_ICON}} text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">02</div>
+        <h3 class="text-white font-bold text-lg mb-2">{{STEP_2_TITLE}}</h3>
+        <p class="text-white/60 text-sm leading-relaxed">{{STEP_2_DESC}}</p>
+        <div class="hidden lg:block step-connector"></div>
+      </div>
+
+      <div class="reveal text-center lg:relative">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas {{STEP_3_ICON}} text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">03</div>
+        <h3 class="text-white font-bold text-lg mb-2">{{STEP_3_TITLE}}</h3>
+        <p class="text-white/60 text-sm leading-relaxed">{{STEP_3_DESC}}</p>
+        <div class="hidden lg:block step-connector"></div>
+      </div>
+
+      <div class="reveal text-center">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas {{STEP_4_ICON}} text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">04</div>
+        <h3 class="text-white font-bold text-lg mb-2">{{STEP_4_TITLE}}</h3>
+        <p class="text-white/60 text-sm leading-relaxed">{{STEP_4_DESC}}</p>
+      </div>
+
+    </div>
+
+    <div class="text-center reveal">
+      <a data-wa data-wa-msg="{{CTA_PRIMARY_MSG}}"
+         class="inline-flex items-center gap-2 bg-wa text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg">
+        <i class="fab fa-whatsapp text-xl"></i>
+        {{CTA_PRIMARY_TEXT}}
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PROVA SOCIAL ════════════════════════════════════════ -->
+<section id="depoimentos" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">{{SOCIAL_TITLE}}</h2>
+      <p class="text-gray-500 text-lg">{{SOCIAL_SUB}}</p>
+    </div>
+
+    <!-- Swiper Testimonials -->
+    <div class="swiper swiper-testimonials reveal mb-14">
+      <div class="swiper-wrapper pb-10">
+
+        <!-- Depoimento 1 -->
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 h-full">
+            <div class="flex gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-5 italic">"{{TEST_1_TEXT}}"</p>
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name={{TEST_1_NAME}}&background={{PRIMARY_COLOR_NOHASH}}&color=fff&rounded=true&size=40"
+                   alt="{{TEST_1_NAME}}" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-bold text-primary text-sm">{{TEST_1_NAME}}</div>
+                <div class="text-gray-400 text-xs">{{TEST_1_ROLE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 2 -->
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 h-full">
+            <div class="flex gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-5 italic">"{{TEST_2_TEXT}}"</p>
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name={{TEST_2_NAME}}&background={{ACCENT_COLOR_NOHASH}}&color=fff&rounded=true&size=40"
+                   alt="{{TEST_2_NAME}}" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-bold text-primary text-sm">{{TEST_2_NAME}}</div>
+                <div class="text-gray-400 text-xs">{{TEST_2_ROLE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 h-full">
+            <div class="flex gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-5 italic">"{{TEST_3_TEXT}}"</p>
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name={{TEST_3_NAME}}&background=25D366&color=fff&rounded=true&size=40"
+                   alt="{{TEST_3_NAME}}" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-bold text-primary text-sm">{{TEST_3_NAME}}</div>
+                <div class="text-gray-400 text-xs">{{TEST_3_ROLE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-6 reveal">
+      <div class="text-center">
+        <div class="text-4xl sm:text-5xl font-black text-primary"
+             data-count="{{STAT_1_COUNT}}" data-suffix="{{STAT_1_SUFFIX}}" data-decimal="{{STAT_1_DECIMAL}}">0</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">{{STAT_1_LABEL}}</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl sm:text-5xl font-black text-primary"
+             data-count="{{STAT_2_COUNT}}" data-suffix="{{STAT_2_SUFFIX}}" data-decimal="{{STAT_2_DECIMAL}}">0</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">{{STAT_2_LABEL}}</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl sm:text-5xl font-black text-primary"
+             data-count="{{STAT_3_COUNT}}" data-suffix="{{STAT_3_SUFFIX}}" data-decimal="{{STAT_3_DECIMAL}}">0</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">{{STAT_3_LABEL}}</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ GALERIA ════════════════════════════════════════════ -->
+<section id="galeria" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">{{GALLERY_TITLE}}</h2>
+      <p class="text-gray-500 text-lg">{{GALLERY_SUB}}</p>
+    </div>
+
+    <!-- Replicar .gallery-item para cada foto do CONFIG -->
+    <div class="masonry-grid reveal">
+
+      <div class="gallery-item">
+        <img src="{{GAL_1_URL}}" alt="{{GAL_1_ALT}}" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="{{GAL_1_URL}}" data-caption="{{GAL_1_CAPTION}}">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">{{GAL_1_CAPTION}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="{{GAL_2_URL}}" alt="{{GAL_2_ALT}}" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="{{GAL_2_URL}}" data-caption="{{GAL_2_CAPTION}}">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">{{GAL_2_CAPTION}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="{{GAL_3_URL}}" alt="{{GAL_3_ALT}}" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="{{GAL_3_URL}}" data-caption="{{GAL_3_CAPTION}}">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">{{GAL_3_CAPTION}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="{{GAL_4_URL}}" alt="{{GAL_4_ALT}}" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="{{GAL_4_URL}}" data-caption="{{GAL_4_CAPTION}}">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">{{GAL_4_CAPTION}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="{{GAL_5_URL}}" alt="{{GAL_5_ALT}}" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="{{GAL_5_URL}}" data-caption="{{GAL_5_CAPTION}}">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">{{GAL_5_CAPTION}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="{{GAL_6_URL}}" alt="{{GAL_6_ALT}}" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="{{GAL_6_URL}}" data-caption="{{GAL_6_CAPTION}}">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">{{GAL_6_CAPTION}}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FAIXA ══════════════════════════════════════════ -->
+<section class="py-16 bg-primary">
+  <div class="max-w-4xl mx-auto px-5 text-center reveal">
+    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">{{CTA_MID_HEADLINE}}</h2>
+    <p class="text-white/70 text-lg mb-8">{{CTA_MID_SUB}}</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a data-wa data-wa-msg="{{CTA_PRIMARY_MSG}}"
+         class="inline-flex items-center justify-center gap-2 bg-wa text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg">
+        <i class="fab fa-whatsapp text-xl"></i> {{CTA_PRIMARY_TEXT}}
+      </a>
+      <a href="#formulario"
+         class="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/25 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/20 transition-colors">
+        <i class="fas fa-file-lines"></i> Preencher formulário
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════════════ -->
+<section id="faq" class="py-20 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-5">
+
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">{{FAQ_TITLE}}</h2>
+    </div>
+
+    <!-- Replicar .faq-item para cada P/R do CONFIG -->
+    <div class="space-y-3 reveal">
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          {{FAQ_1_Q}}
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">{{FAQ_1_A}}</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          {{FAQ_2_Q}}
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">{{FAQ_2_A}}</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          {{FAQ_3_Q}}
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">{{FAQ_3_A}}</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          {{FAQ_4_Q}}
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">{{FAQ_4_A}}</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          {{FAQ_5_Q}}
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">{{FAQ_5_A}}</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          {{FAQ_6_Q}}
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">{{FAQ_6_A}}</div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-8 reveal">
+      <a data-wa data-wa-msg="{{CTA_PRIMARY_MSG}}"
+         class="inline-flex items-center gap-2 text-primary font-semibold underline hover:text-accent transition-colors">
+        <i class="fab fa-whatsapp text-wa text-lg"></i> Falar com especialista
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FORMULÁRIO ═════════════════════════════════════════ -->
+<section id="formulario" class="py-20 bg-white">
+  <div class="max-w-2xl mx-auto px-5">
+
+    <div class="text-center mb-10 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">{{FORM_TITLE}}</h2>
+      <p class="text-gray-500 text-lg">{{FORM_SUB}}</p>
+    </div>
+
+    <div id="form-wrapper" class="reveal">
+      <form id="lead-form" class="bg-gray-50 rounded-2xl p-7 sm:p-9 shadow-sm border border-gray-100 space-y-5" novalidate>
+
+        <div>
+          <label for="form-name" class="block text-sm font-semibold text-primary mb-1.5">Nome completo *</label>
+          <input id="form-name" type="text" name="nome" required autocomplete="name"
+                 placeholder="Seu nome completo"
+                 class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white">
+          <p class="hidden text-red-500 text-xs mt-1" data-error="form-name">Por favor, informe seu nome.</p>
+        </div>
+
+        <div>
+          <label for="form-phone" class="block text-sm font-semibold text-primary mb-1.5">WhatsApp *</label>
+          <input id="form-phone" type="tel" name="whatsapp" required autocomplete="tel"
+                 placeholder="(00) 00000-0000"
+                 class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white">
+          <p class="hidden text-red-500 text-xs mt-1" data-error="form-phone">Informe um número válido com DDD.</p>
+        </div>
+
+        <div>
+          <label for="form-type" class="block text-sm font-semibold text-primary mb-1.5">{{FORM_SELECT_LABEL}} *</label>
+          <select id="form-type" name="tipo_movel" required
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white appearance-none">
+            <option value="" disabled selected>Selecione uma opção</option>
+            {{FORM_SELECT_OPTIONS}}
+          </select>
+          <p class="hidden text-red-500 text-xs mt-1" data-error="form-type">Selecione uma opção.</p>
+        </div>
+
+        <div>
+          <label for="form-message" class="block text-sm font-semibold text-primary mb-1.5">Mensagem <span class="text-gray-400 font-normal">(opcional)</span></label>
+          <textarea id="form-message" name="mensagem" rows="3" maxlength="400"
+                    placeholder="Conte um pouco sobre o que precisa..."
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+                class="w-full bg-primary text-white font-bold text-base py-4 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+          {{FORM_BTN}}
+        </button>
+
+        <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 text-center">
+          ⚠️ Algo deu errado. Tente novamente ou
+          <a data-wa class="underline font-semibold">fale no WhatsApp</a>.
+        </div>
+
+        <p class="text-center text-xs text-gray-400">
+          <i class="fas fa-lock mr-1"></i> {{FORM_PRIVACY}}
+        </p>
+
+      </form>
+
+      <!-- Success -->
+      <div id="form-success" class="hidden bg-green-50 border border-green-200 rounded-2xl p-9 text-center shadow-sm">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-check text-green-600 text-2xl"></i>
+        </div>
+        <h3 class="font-black text-green-700 text-xl mb-2">Solicitação enviada!</h3>
+        <p class="text-green-600 mb-6 text-sm">Nossa equipe retorna em até 2 horas.</p>
+        <a id="wa-success-btn" href="#" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-wa text-white font-bold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity">
+          <i class="fab fa-whatsapp text-lg"></i> Prefere falar agora?
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-5 text-center reveal">
+    <h2 class="text-3xl sm:text-4xl font-black text-primary mb-4">{{CTA_FINAL_HEADLINE}}</h2>
+    <p class="text-gray-500 text-lg mb-4 leading-relaxed">{{CTA_FINAL_SUB}}</p>
+    <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-8">
+      <span><i class="fas fa-clock text-accent mr-1.5"></i> {{CTA_SEAL_1}}</span>
+      <span><i class="fas fa-box text-accent mr-1.5"></i> {{CTA_SEAL_2}}</span>
+      <span><i class="fas fa-check text-accent mr-1.5"></i> {{CTA_SEAL_3}}</span>
+    </div>
+    <a data-wa data-wa-msg="{{CTA_PRIMARY_MSG}}"
+       class="inline-flex items-center gap-2.5 bg-wa text-white font-black text-lg px-10 py-5 rounded-2xl hover:opacity-90 transition-opacity shadow-xl shadow-green-900/20">
+      <i class="fab fa-whatsapp text-2xl"></i>
+      {{CTA_FINAL_BTN}}
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer id="footer" class="bg-primary py-14">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+
+      <!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 bg-accent rounded-lg flex items-center justify-center">
+            <i class="fas {{BRAND_ICON}} text-white text-sm"></i>
+          </div>
+          <span class="font-black text-white text-lg">{{COMPANY_NAME}}</span>
+        </div>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">{{FOOTER_DESC}}</p>
+        <div class="flex gap-3">
+          <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-accent hover:text-white transition-colors" aria-label="Instagram">
+            <i class="fab fa-instagram text-sm"></i>
+          </a>
+          <a href="{{FACEBOOK_URL}}" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-accent hover:text-white transition-colors" aria-label="Facebook">
+            <i class="fab fa-facebook-f text-sm"></i>
+          </a>
+          <a data-wa class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-wa hover:text-white transition-colors" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp text-sm"></i>
+          </a>
+          <a href="{{YOUTUBE_URL}}" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-accent hover:text-white transition-colors" aria-label="YouTube">
+            <i class="fab fa-youtube text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 1 (serviços/produtos) — customizar com links do CONFIG -->
+      <div>
+        <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-widest">{{FOOTER_COL1_TITLE}}</h4>
+        <ul class="space-y-2.5 text-white/50 text-sm">
+          <li><a href="#servicos" class="hover:text-white transition-colors">{{PROD_1_NAME}}</a></li>
+          <li><a href="#servicos" class="hover:text-white transition-colors">{{PROD_2_NAME}}</a></li>
+          <li><a href="#servicos" class="hover:text-white transition-colors">{{PROD_3_NAME}}</a></li>
+          <li><a href="#servicos" class="hover:text-white transition-colors">{{PROD_4_NAME}}</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 2 (empresa) -->
+      <div>
+        <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-widest">{{FOOTER_COL2_TITLE}}</h4>
+        <ul class="space-y-2.5 text-white/50 text-sm">
+          <li><a href="#diferenciais"  class="hover:text-white transition-colors">Por que nos escolher</a></li>
+          <li><a href="#como-funciona" class="hover:text-white transition-colors">Como funciona</a></li>
+          <li><a href="#depoimentos"   class="hover:text-white transition-colors">Depoimentos</a></li>
+          <li><a href="#galeria"       class="hover:text-white transition-colors">Galeria</a></li>
+          <li><a href="#faq"           class="hover:text-white transition-colors">Dúvidas frequentes</a></li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div>
+        <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-widest">Contato</h4>
+        <ul class="space-y-3 text-white/50 text-sm">
+          <li class="flex items-start gap-2">
+            <i class="fab fa-whatsapp text-wa mt-0.5 text-base"></i>
+            <a data-wa class="hover:text-white transition-colors">{{PHONE_DISPLAY}}</a>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-envelope text-accent mt-0.5"></i>
+            <span>{{EMAIL}}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-location-dot text-accent mt-0.5"></i>
+            <span>{{ADDRESS}}</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/35 text-xs">
+      <span>© <span id="year"></span> {{COMPANY_NAME}} — CNPJ: {{CNPJ}}</span>
+      <span>Todos os direitos reservados.</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ══ WA FLOAT BUTTON ════════════════════════════════════ -->
+<a id="wa-float" href="#" target="_blank" rel="noopener noreferrer"
+   class="fixed bottom-5 right-5 z-[9999] w-14 h-14 bg-wa rounded-full flex items-center justify-center shadow-2xl shadow-green-900/40 hover:scale-110 transition-transform"
+   aria-label="Falar no WhatsApp" title="Fale conosco agora!">
+  <i class="fab fa-whatsapp text-white text-3xl"></i>
+</a>
+
+<!-- ══ CHATBOT WIDGET (builtin) ═══════════════════════════ -->
+<div id="chatbot" class="hidden z-[9998]">
+  <div class="bg-primary px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+        <i class="fas {{BRAND_ICON}} text-white text-xs"></i>
+      </div>
+      <div>
+        <div class="text-white font-semibold text-sm">{{COMPANY_NAME}}</div>
+        <div class="text-white/60 text-xs flex items-center gap-1">
+          <span class="w-1.5 h-1.5 bg-wa rounded-full inline-block"></span> Online agora
+        </div>
+      </div>
+    </div>
+    <button id="chatbot-close" class="text-white/60 hover:text-white transition-colors p-1" aria-label="Fechar chat">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div id="chatbot-body"></div>
+</div>
+
+<!-- ══ LIGHTBOX ═══════════════════════════════════════════ -->
+<div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-label="Visualizador de imagem">
+  <button id="lb-close" class="absolute top-4 right-4 text-white/70 hover:text-white text-2xl z-10" aria-label="Fechar">
+    <i class="fas fa-times"></i>
+  </button>
+  <button id="lb-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-2xl z-10 w-10 h-10 flex items-center justify-center" aria-label="Anterior">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <div class="flex flex-col items-center gap-3 max-w-[90vw]">
+    <img id="lb-img" src="" alt="" class="max-h-[80vh] max-w-full object-contain rounded-lg shadow-2xl">
+    <p id="lb-caption" class="text-white/70 text-sm"></p>
+  </div>
+  <button id="lb-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-2xl z-10 w-10 h-10 flex items-center justify-center" aria-label="Próxima">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!--
+  ══ TYPEBOT (descomentar após configurar) ══════════════════
+  Ver TYPEBOT-SETUP.md para instruções completas.
+
+<script type="module">
+  import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
+  window.Typebot = Typebot;
+  if (typeof SITE_CONFIG !== 'undefined' &&
+      SITE_CONFIG.chatbot?.provider === 'typebot' &&
+      SITE_CONFIG.chatbot?.typebotId !== 'SEU-TYPEBOT-ID') {
+    Typebot.initBubble({
+      typebot: SITE_CONFIG.chatbot.typebotId,
+      previewMessage: { message: 'Posso te ajudar? 💬', autoShowDelay: 8000 },
+      theme: {
+        button: { backgroundColor: '{{PRIMARY_COLOR}}', iconColor: '#FFFFFF' },
+        previewMessage: { backgroundColor: '#fff', textColor: '#2C2C2C',
+          closeButtonBackgroundColor: '{{ACCENT_COLOR}}', closeButtonIconColor: '#fff' },
+        chatWindow: { backgroundColor: '#F8F6F2' },
+      },
+    });
+  }
+</script>
+-->
+
+</body>
+</html>

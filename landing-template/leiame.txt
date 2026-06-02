@@ -1,0 +1,15 @@
+O que é cada arquivo
+Arquivo	Papel
+CONFIG.md	Você preenche — 16 seções estruturadas com todas as informações do projeto
+PROMPT-PARA-CLAUDE.md	Cole no Claude — instrui o Claude com mapeamento completo de 60+ placeholders
+index.html	Página template com {{PLACEHOLDERS}} em todo o conteúdo
+js/config.js	Config template com {{PLACEHOLDERS}}
+js/main.js + css/custom.css + supabase/setup.sql	Arquivos genéricos — reutilizados sem alteração em qualquer projeto
+Como usar para um novo projeto
+
+1. Copie a pasta landing-template/ → renomeie para o novo projeto
+2. Abra CONFIG.md → preencha as 16 seções (20–40 min)
+3. Claude Code: "Customize o template com base no CONFIG.md"
+   ou Claude Web: cole PROMPT-PARA-CLAUDE.md + CONFIG.md preenchido
+4. Salve os arquivos gerados → abra index.html no navegador
+Tempo total estimado por projeto: ~2 horas (da ideia à página no ar).

@@ -1,0 +1,983 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochê Manual Sob Encomenda | Peças Artesanais</title>
+  <meta name="description" content="Peças em crochê manual feitas com amor. Amigurumis, decoração, acessórios e presentes personalizados sob encomenda.">
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Mika Paixão Crochê">
+  <meta property="og:description" content="Peças em crochê manual feitas com amor. Amigurumis, decoração, acessórios e presentes personalizados sob encomenda.">
+  <meta property="og:type"        content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Icons & Swiper CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#2C1810', light: '#2C1810cc', dark: '#2C1810aa' },
+            accent:  '#C8845A',
+            wa:      '#25D366',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "Mika Paixão Crochê",
+        "description": "Artesanato em crochê em Recife",
+        "telephone": "(81) 98240-7186",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua José Felipe Santiago, n150, Iputinga",
+          "addressLocality": "Recife",
+          "addressRegion": "PE",
+          "addressCountry": "BR"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Vocês fazem peças personalizadas?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sim. O cliente pode escolher cores e, em alguns casos, ajustar detalhes da peça conforme a disponibilidade do modelo." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="font-sans bg-white text-gray-800 antialiased">
+
+<!-- ══ SKIP LINK ══════════════════════════════════════════ -->
+<a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-accent text-white px-4 py-2 rounded z-50">
+  Ir para o conteúdo principal
+</a>
+
+<!-- ══ NAVBAR ═════════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50" role="banner">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2.5 shrink-0">
+      <img src="images/logo_mika.jpeg" alt="Mika Paixão Crochê"
+           class="w-9 h-9 rounded-lg object-cover"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="w-9 h-9 bg-accent rounded-lg items-center justify-center hidden">
+        <i class="fas fa-yarn text-white text-sm"></i>
+      </div>
+      <span class="nav-brand font-black text-lg text-white tracking-tight leading-none">
+        Mika Paixão<br><span class="text-accent">Crochê</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-7" aria-label="Menu principal">
+      <a href="#diferenciais"  class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Diferenciais</a>
+      <a href="#servicos"      class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Produtos</a>
+      <a href="#como-funciona" class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Como Funciona</a>
+      <a href="#depoimentos"   class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Clientes</a>
+      <a href="#formulario"    class="nav-link text-white/75 hover:text-white font-medium text-sm transition-colors">Contato</a>
+    </nav>
+
+    <!-- CTA + hamburger -->
+    <div class="flex items-center gap-3">
+      <a data-wa data-wa-msg="Olá! Vim pelo site e gostaria de um orçamento para uma peça em crochê."
+         class="hidden sm:flex items-center gap-1.5 bg-wa text-white font-semibold px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-opacity">
+        <i class="fab fa-whatsapp text-base"></i> WhatsApp
+      </a>
+      <a data-wa class="sm:hidden text-wa text-2xl"><i class="fab fa-whatsapp"></i></a>
+      <button id="menu-toggle" class="md:hidden text-white p-1.5 rounded-lg" aria-label="Abrir menu" aria-expanded="false">
+        <i id="menu-icon" class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-white/10">
+    <nav class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-1">
+      <a href="#diferenciais"  class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">Diferenciais</a>
+      <a href="#servicos"      class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">Produtos</a>
+      <a href="#como-funciona" class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">Como Funciona</a>
+      <a href="#depoimentos"   class="text-white/80 hover:text-white font-medium py-2.5 border-b border-white/10">Clientes</a>
+      <a href="#formulario"    class="text-white/80 hover:text-white font-medium py-2.5">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ HERO ═══════════════════════════════════════════════ -->
+<section id="hero" class="relative min-h-screen flex items-center pt-20">
+  <div class="absolute inset-0 z-0">
+    <img src="images/image5.jpeg" alt="Artesanato em crochê — Mika Paixão Crochê"
+         class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/92 via-primary/70 to-primary/30"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 py-20 w-full">
+    <div class="max-w-2xl">
+
+      <span class="inline-block bg-accent/20 text-accent border border-accent/30 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+        Arte com fios
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] mb-5">
+        Peças únicas <span class="text-accent">feitas com amor</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-white/80 mb-8 leading-relaxed">
+        Amigurumis, decoração e acessórios personalizados em crochê manual. Cada peça criada à mão com carinho, exclusividade e atenção a cada detalhe.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-10">
+        <a data-wa data-wa-msg="Olá! Vim pelo site e gostaria de um orçamento para uma peça em crochê."
+           class="flex items-center justify-center gap-2 bg-wa text-white font-bold text-base px-7 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-green-900/30">
+          <i class="fab fa-whatsapp text-xl"></i>
+          Faça um orçamento
+        </a>
+        <a href="#servicos"
+           class="flex items-center justify-center gap-2 bg-white/10 border border-white/25 text-white font-semibold text-base px-7 py-4 rounded-xl hover:bg-white/20 transition-colors backdrop-blur-sm">
+          Ver produtos
+          <i class="fas fa-arrow-down text-sm"></i>
+        </a>
+      </div>
+
+      <!-- Badges -->
+      <div class="flex flex-wrap gap-5">
+        <div class="flex items-center gap-2 text-white/80 text-sm">
+          <i class="fas fa-star text-accent"></i>
+          <span>+ de 500 peças criadas</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/80 text-sm">
+          <i class="fas fa-shield-halved text-accent"></i>
+          <span>10 anos tecendo amor</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/80 text-sm">
+          <i class="fas fa-star text-accent"></i>
+          <span>★★★★★ 5 estrelas</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIFERENCIAIS ════════════════════════════════════════ -->
+<!-- ══ PRODUTOS / SERVIÇOS ════════════════════════════════ -->
+<section id="servicos" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-10 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">Casa e Decoração</h2>
+      <p class="text-gray-500 text-lg">Crochê artesanal para presentear, decorar e criar memórias afetivas.</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-8 reveal">
+      <button class="filter-btn active px-5 py-2 rounded-full border border-primary/20 text-sm font-semibold text-primary" data-filter="todos">Todos</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-primary/20 text-sm font-semibold text-primary" data-filter="amigurumi">Amigurumi</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-primary/20 text-sm font-semibold text-primary" data-filter="acessorios">Acessórios</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-primary/20 text-sm font-semibold text-primary" data-filter="infantil">Infantil</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-primary/20 text-sm font-semibold text-primary" data-filter="decoracao">Decoração</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-primary/20 text-sm font-semibold text-primary" data-filter="sob-encomenda">Sob Encomenda</button>
+    </div>
+
+    <div class="products-scroll">
+
+      <!-- Produto 1 — Amigurumis Personalizados -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="amigurumi">
+        <div class="relative overflow-hidden h-52">
+          <img src="images/image3.jpeg" alt="Amigurumis Personalizados" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">Amigurumi</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">Amigurumis Personalizados</h3>
+          <p class="text-gray-500 text-sm mb-4">Bichinhos feitos à mão com muito carinho, ideais para presentear crianças, colecionadores e pessoas especiais.</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="Olá! Vi o Amigurumi Personalizado no site e gostaria de fazer um orçamento."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="Olá! Vi o Amigurumi Personalizado no site e gostaria de saber mais."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 2 — Chaveiros em Crochê -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="acessorios">
+        <div class="relative overflow-hidden h-52">
+          <img src="images/image11.jpeg" alt="Chaveiros em Crochê" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">Acessórios</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">Chaveiros em Crochê</h3>
+          <p class="text-gray-500 text-sm mb-4">Pequenos, delicados e cheios de personalidade, perfeitos para lembranças, presentes e brindes especiais.</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="Olá! Vi os Chaveiros em Crochê no site e gostaria de um orçamento."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="Olá! Vi os Chaveiros em Crochê no site e gostaria de saber mais."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 3 — Bolsas -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="acessorios">
+        <div class="relative overflow-hidden h-52">
+          <img src="images/image6.jpeg" alt="Bolsas em Crochê" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">Acessórios</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">Bolsas</h3>
+          <p class="text-gray-500 text-sm mb-4">Criações artesanais pensadas para quem valoriza exclusividade, beleza e o toque do feito à mão.</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="Olá! Vi as Bolsas em Crochê no site e gostaria de um orçamento."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="Olá! Vi as Bolsas em Crochê no site e gostaria de saber mais."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 4 — Tocas e Acessórios -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="infantil">
+        <div class="relative overflow-hidden h-52">
+          <img src="images/image16.jpeg" alt="Tocas e Acessórios" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">Infantil</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">Tocas e Acessórios</h3>
+          <p class="text-gray-500 text-sm mb-4">Peças feitas à mão com charme e aconchego, com possibilidade de escolher combinações de cores.</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="Olá! Vi as Tocas e Acessórios no site e gostaria de um orçamento."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="Olá! Vi as Tocas e Acessórios no site e gostaria de saber mais."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 5 — Itens de Decoração em Crochê -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="decoracao">
+        <div class="relative overflow-hidden h-52">
+          <img src="images/image14.jpeg" alt="Itens de Decoração em Crochê" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">Decoração</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">Itens de Decoração</h3>
+          <p class="text-gray-500 text-sm mb-4">Sousplats, enfeites, centros de mesa e outras peças que deixam o ambiente mais acolhedor e único.</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="Olá! Vi os Itens de Decoração em Crochê no site e gostaria de um orçamento."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="Olá! Vi os Itens de Decoração em Crochê no site e gostaria de saber mais."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 6 — Kit Higiene -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100" data-category="sob-encomenda">
+        <div class="relative overflow-hidden h-52">
+          <img src="images/image21.jpeg" alt="Kit Higiene em Crochê" loading="lazy"
+               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">Sob Encomenda</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-primary text-base mb-1">Kit Higiene</h3>
+          <p class="text-gray-500 text-sm mb-4">Criações artesanais pensadas para quem valoriza exclusividade, beleza e o toque do feito à mão.</p>
+          <div class="card-actions flex gap-2">
+            <a data-wa data-wa-msg="Olá! Vi o Kit Higiene no site e gostaria de um orçamento."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-wa text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp"></i> Orçar
+            </a>
+            <a data-wa data-wa-msg="Olá! Vi o Kit Higiene no site e gostaria de saber mais."
+               class="flex-1 flex items-center justify-center gap-1.5 bg-primary text-white text-sm font-semibold py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+              <i class="fas fa-arrow-right"></i> Saiba mais
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIFERENCIAIS ════════════════════════════════════════ -->
+<section id="diferenciais" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">Quer fazer alguém feliz?</h2>
+      <p class="text-gray-500 text-lg max-w-xl mx-auto">Presentei com fios de amor</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+      <div class="reveal bg-gray-50 rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas fa-heart text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">Crochê Criativo</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Cada peça é feita manualmente, com carinho em cada ponto e atenção aos pequenos detalhes.</p>
+      </div>
+
+      <div class="reveal bg-gray-50 rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas fa-palette text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">Cores Personalizadas</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">O cliente pode escolher as cores de cada peça para combinar com o momento, a decoração ou a pessoa presenteada.</p>
+      </div>
+
+      <div class="reveal bg-gray-50 rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas fa-star text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">Peças Únicas</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Produzimos itens exclusivos, com identidade artesanal e acabamento especial, fugindo do padrão industrial.</p>
+      </div>
+
+      <div class="reveal bg-gray-50 rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fas fa-clock text-primary text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-base mb-2">Produção Sob Demanda</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Algumas peças são feitas por encomenda, respeitando o tempo de produção para garantir qualidade e um resultado especial.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMO FUNCIONA ═══════════════════════════════════════ -->
+<section id="como-funciona" class="py-20 bg-primary">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">Do primeiro contato à sua peça pronta</h2>
+      <p class="text-white/60 text-lg">Um processo simples, artesanal e personalizado do começo ao fim.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+      <div class="reveal text-center lg:relative">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-comments text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">01</div>
+        <h3 class="text-white font-bold text-lg mb-2">Fale conosco</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Você envia sua ideia, referência ou escolhe uma peça do catálogo pelo WhatsApp.</p>
+        <div class="hidden lg:block step-connector"></div>
+      </div>
+
+      <div class="reveal text-center lg:relative">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-swatchbook text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">02</div>
+        <h3 class="text-white font-bold text-lg mb-2">Escolha os detalhes</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Definimos modelo, cores, tamanho e personalizações disponíveis para a sua encomenda.</p>
+        <div class="hidden lg:block step-connector"></div>
+      </div>
+
+      <div class="reveal text-center lg:relative">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-hand-sparkles text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">03</div>
+        <h3 class="text-white font-bold text-lg mb-2">Produção artesanal</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Sua peça é criada manualmente com atenção, cuidado e tempo de produção adequado.</p>
+        <div class="hidden lg:block step-connector"></div>
+      </div>
+
+      <div class="reveal text-center">
+        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-gift text-white text-2xl"></i>
+        </div>
+        <div class="text-accent font-black text-4xl mb-1">04</div>
+        <h3 class="text-white font-bold text-lg mb-2">Receba ou presenteie</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Depois de pronta, sua peça segue para entrega e chega pronta para encantar.</p>
+      </div>
+
+    </div>
+
+    <div class="text-center reveal">
+      <a data-wa data-wa-msg="Olá! Vim pelo site e gostaria de um orçamento para uma peça em crochê."
+         class="inline-flex items-center gap-2 bg-wa text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg">
+        <i class="fab fa-whatsapp text-xl"></i>
+        Faça um orçamento
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PROVA SOCIAL ════════════════════════════════════════ -->
+<section id="depoimentos" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">Quem compra, se apaixona</h2>
+      <p class="text-gray-500 text-lg">Carinho em cada detalhe e peças que marcam momentos especiais.</p>
+    </div>
+
+    <!-- Swiper Testimonials -->
+    <div class="swiper swiper-testimonials reveal mb-14">
+      <div class="swiper-wrapper pb-10">
+
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 h-full">
+            <div class="flex gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-5 italic">"Encomendei um amigurumi personalizado e ficou ainda mais lindo do que eu imaginava. Dá para ver o amor em cada detalhe."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name=Andreza+Giselle&background=2C1810&color=fff&rounded=true&size=40"
+                   alt="Andreza Giselle" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-bold text-primary text-sm">Andreza Giselle</div>
+                <div class="text-gray-400 text-xs">Enfermeira, Moreno/PE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 h-full">
+            <div class="flex gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-5 italic">"As cores ficaram exatamente como eu pedi. Foi um presente emocionante e muito elogiado."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name=Leiry+Lee&background=C8845A&color=fff&rounded=true&size=40"
+                   alt="Leiry Lee" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-bold text-primary text-sm">Leiry Lee</div>
+                <div class="text-gray-400 text-xs">Professora, Portugal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 h-full">
+            <div class="flex gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i><i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-5 italic">"Atendimento atencioso, acabamento impecável e uma delicadeza que só o artesanal tem."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name=Lizandra+Pallumbo&background=25D366&color=fff&rounded=true&size=40"
+                   alt="Lizandra Pallumbo" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-bold text-primary text-sm">Lizandra Pallumbo</div>
+                <div class="text-gray-400 text-xs">Advogada, Curitiba/PR</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-6 reveal">
+      <div class="text-center">
+        <div class="text-4xl sm:text-5xl font-black text-primary"
+             data-count="100" data-suffix="+" data-decimal="false">0</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Clientes atendidos</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl sm:text-5xl font-black text-primary"
+             data-count="100" data-suffix="%" data-decimal="false">0</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Produção manual</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl sm:text-5xl font-black text-primary"
+             data-count="98" data-suffix="%" data-decimal="false">0</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Recomendariam</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ GALERIA ════════════════════════════════════════════ -->
+<section id="galeria" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">Peças que já ganharam vida</h2>
+      <p class="text-gray-500 text-lg">Um pouco do nosso trabalho em crochê manual, feito com amor e exclusividade.</p>
+    </div>
+
+    <div class="masonry-grid reveal">
+
+      <div class="gallery-item">
+        <img src="images/image5.jpeg" alt="Amigurumi artesanal feito à mão" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="images/image5.jpeg" data-caption="Amigurumi artesanal feito à mão">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">Amigurumi artesanal feito à mão</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/image9.jpeg" alt="Peça em crochê com cores personalizadas" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="images/image9.jpeg" data-caption="Peça em crochê com cores personalizadas">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">Peça em crochê com cores personalizadas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/image23.jpeg" alt="Item decorativo em crochê manual" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="images/image23.jpeg" data-caption="Item decorativo em crochê manual">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">Item decorativo em crochê manual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/image13.jpeg" alt="Presente artesanal exclusivo" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="images/image13.jpeg" data-caption="Presente artesanal exclusivo">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">Presente artesanal exclusivo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/image11.jpeg" alt="Detalhes e acabamento da peça" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="images/image11.jpeg" data-caption="Detalhes e acabamento da peça">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">Detalhes e acabamento da peça</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/image24.jpeg" alt="Criação sob encomenda em crochê" loading="lazy"
+             class="w-full object-cover rounded-xl"
+             data-full="images/image24.jpeg" data-caption="Criação sob encomenda em crochê">
+        <div class="gallery-overlay rounded-xl">
+          <div class="text-center text-white p-4">
+            <i class="fas fa-expand text-2xl mb-2 block"></i>
+            <span class="text-sm font-semibold">Criação sob encomenda em crochê</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FAIXA ══════════════════════════════════════════ -->
+<section class="py-16 bg-primary">
+  <div class="max-w-4xl mx-auto px-5 text-center reveal">
+    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3">Pronta para criar algo especial?</h2>
+    <p class="text-white/70 text-lg mb-8">Encomende agora e receba uma peça única, feita à mão com todo o carinho do artesanato verdadeiro.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a data-wa data-wa-msg="Olá! Vim pelo site e gostaria de um orçamento para uma peça em crochê."
+         class="inline-flex items-center justify-center gap-2 bg-wa text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg">
+        <i class="fab fa-whatsapp text-xl"></i> Faça um orçamento
+      </a>
+      <a href="#formulario"
+         class="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/25 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/20 transition-colors">
+        <i class="fas fa-file-lines"></i> Preencher formulário
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════════════ -->
+<section id="faq" class="py-20 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-5">
+
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">Perguntas frequentes</h2>
+    </div>
+
+    <div class="space-y-3 reveal">
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          Vocês fazem peças personalizadas?
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">Sim. O cliente pode escolher cores e, em alguns casos, ajustar detalhes da peça conforme a disponibilidade do modelo.</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          Todas as peças são à pronta entrega?
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">Não. Algumas peças são produzidas sob encomenda para garantir exclusividade e personalização.</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          Qual é o prazo de produção?
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">O prazo varia conforme o tipo de peça, quantidade e nível de personalização. Informamos tudo no orçamento.</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          As peças são feitas à mão mesmo?
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">Sim. Cada criação é artesanal, produzida manualmente com cuidado e atenção aos detalhes.</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          Como faço para pedir um orçamento?
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">É só clicar no botão do WhatsApp e enviar a referência da peça ou contar sua ideia.</div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-primary hover:text-accent transition-colors" aria-expanded="false">
+          Posso pedir uma peça para presente?
+          <i class="faq-icon fas fa-chevron-down text-gray-400 text-sm ml-4 flex-shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-gray-600 leading-relaxed text-sm">Sim. Nossas peças são ideais para presentear em aniversários, chá revelação, maternidade e datas especiais.</div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-8 reveal">
+      <a data-wa data-wa-msg="Olá! Vim pelo site e gostaria de um orçamento para uma peça em crochê."
+         class="inline-flex items-center gap-2 text-primary font-semibold underline hover:text-accent transition-colors">
+        <i class="fab fa-whatsapp text-wa text-lg"></i> Falar com especialista
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FORMULÁRIO ═════════════════════════════════════════ -->
+<section id="formulario" class="py-20 bg-white">
+  <div class="max-w-2xl mx-auto px-5">
+
+    <div class="text-center mb-10 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black text-primary mb-3">Peça seu orçamento</h2>
+      <p class="text-gray-500 text-lg">Conte o que você deseja e vamos criar uma peça especial para você.</p>
+    </div>
+
+    <div id="form-wrapper" class="reveal">
+      <form id="lead-form" class="bg-gray-50 rounded-2xl p-7 sm:p-9 shadow-sm border border-gray-100 space-y-5" novalidate>
+
+        <div>
+          <label for="form-name" class="block text-sm font-semibold text-primary mb-1.5">Nome completo *</label>
+          <input id="form-name" type="text" name="nome" required autocomplete="name"
+                 placeholder="Seu nome completo"
+                 class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white">
+          <p class="hidden text-red-500 text-xs mt-1" data-error="form-name">Por favor, informe seu nome.</p>
+        </div>
+
+        <div>
+          <label for="form-phone" class="block text-sm font-semibold text-primary mb-1.5">WhatsApp *</label>
+          <input id="form-phone" type="tel" name="whatsapp" required autocomplete="tel"
+                 placeholder="(00) 00000-0000"
+                 class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white">
+          <p class="hidden text-red-500 text-xs mt-1" data-error="form-phone">Informe um número válido com DDD.</p>
+        </div>
+
+        <div>
+          <label for="form-type" class="block text-sm font-semibold text-primary mb-1.5">Tipo de peça *</label>
+          <select id="form-type" name="tipo_movel" required
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white appearance-none">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="amigurumis">Amigurumis</option>
+            <option value="chaveiros">Chaveiros</option>
+            <option value="tocas">Tocas e acessórios</option>
+            <option value="decoracao">Decoração em crochê</option>
+            <option value="bolsas">Bolsas</option>
+            <option value="kit-higiene">Kit Higiene</option>
+            <option value="lembrancinha">Lembrancinha</option>
+            <option value="presente-personalizado">Presente personalizado</option>
+            <option value="sob-encomenda">Sob encomenda</option>
+            <option value="outros">Outros</option>
+          </select>
+          <p class="hidden text-red-500 text-xs mt-1" data-error="form-type">Selecione uma opção.</p>
+        </div>
+
+        <div>
+          <label for="form-message" class="block text-sm font-semibold text-primary mb-1.5">Mensagem <span class="text-gray-400 font-normal">(opcional)</span></label>
+          <textarea id="form-message" name="mensagem" rows="3" maxlength="400"
+                    placeholder="Conte um pouco sobre o que precisa..."
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors bg-white resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+                class="w-full bg-primary text-white font-bold text-base py-4 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+          Solicitar orçamento
+        </button>
+
+        <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 text-center">
+          ⚠️ Algo deu errado. Tente novamente ou
+          <a data-wa class="underline font-semibold">fale no WhatsApp</a>.
+        </div>
+
+        <p class="text-center text-xs text-gray-400">
+          <i class="fas fa-lock mr-1"></i> Seus dados serão usados apenas para responder seu atendimento e enviar seu orçamento.
+        </p>
+
+      </form>
+
+      <!-- Success -->
+      <div id="form-success" class="hidden bg-green-50 border border-green-200 rounded-2xl p-9 text-center shadow-sm">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-check text-green-600 text-2xl"></i>
+        </div>
+        <h3 class="font-black text-green-700 text-xl mb-2">Solicitação enviada!</h3>
+        <p class="text-green-600 mb-6 text-sm">Nossa equipe retorna em até 2 horas.</p>
+        <a id="wa-success-btn" href="#" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-wa text-white font-bold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity">
+          <i class="fab fa-whatsapp text-lg"></i> Prefere falar agora?
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-5 text-center reveal">
+    <h2 class="text-3xl sm:text-4xl font-black text-primary mb-4">Sua próxima peça em crochê pode começar hoje</h2>
+    <p class="text-gray-500 text-lg mb-4 leading-relaxed">Fale conosco no WhatsApp e receba um atendimento personalizado para criar uma peça única, feita à mão e com a sua cara.</p>
+    <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-8">
+      <span><i class="fas fa-clock text-accent mr-1.5"></i> Atendimento personalizado</span>
+      <span><i class="fas fa-box text-accent mr-1.5"></i> Peças sob encomenda</span>
+      <span><i class="fas fa-check text-accent mr-1.5"></i> Produção artesanal exclusiva</span>
+    </div>
+    <a data-wa data-wa-msg="Olá! Vim pelo site e gostaria de um orçamento para uma peça em crochê."
+       class="inline-flex items-center gap-2.5 bg-wa text-white font-black text-lg px-10 py-5 rounded-2xl hover:opacity-90 transition-opacity shadow-xl shadow-green-900/20">
+      <i class="fab fa-whatsapp text-2xl"></i>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer id="footer" class="bg-primary py-14">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+
+      <!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+          <img src="images/logo_mika.jpeg" alt="Mika Paixão Crochê"
+               class="w-9 h-9 rounded-lg object-cover"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="w-9 h-9 bg-accent rounded-lg items-center justify-center hidden">
+            <i class="fas fa-yarn text-white text-sm"></i>
+          </div>
+          <span class="font-black text-white text-lg">Mika Paixão Crochê</span>
+        </div>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Ateliê de crochê manual especializado em peças artesanais exclusivas para decorar, presentear e transformar ideias em fios de amor.</p>
+        <div class="flex gap-3">
+          <a href="https://www.instagram.com/mika_paixao_croche" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-accent hover:text-white transition-colors" aria-label="Instagram">
+            <i class="fab fa-instagram text-sm"></i>
+          </a>
+          <a href="https://facebook.com/mikaele.paixao" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-accent hover:text-white transition-colors" aria-label="Facebook">
+            <i class="fab fa-facebook-f text-sm"></i>
+          </a>
+          <a data-wa class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-wa hover:text-white transition-colors" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp text-sm"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white/70 hover:bg-accent hover:text-white transition-colors" aria-label="YouTube">
+            <i class="fab fa-youtube text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 1 — Institucional -->
+      <div>
+        <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-widest">Institucional</h4>
+        <ul class="space-y-2.5 text-white/50 text-sm">
+          <li><a href="#hero"         class="hover:text-white transition-colors">Início</a></li>
+          <li><a href="#diferenciais" class="hover:text-white transition-colors">Sobre nós</a></li>
+          <li><a href="#como-funciona" class="hover:text-white transition-colors">Como funciona</a></li>
+          <li><a href="#galeria"      class="hover:text-white transition-colors">Galeria</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 2 — Produtos -->
+      <div>
+        <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-widest">Produtos</h4>
+        <ul class="space-y-2.5 text-white/50 text-sm">
+          <li><a href="#servicos" class="hover:text-white transition-colors">Amigurumis</a></li>
+          <li><a href="#servicos" class="hover:text-white transition-colors">Decoração</a></li>
+          <li><a href="#servicos" class="hover:text-white transition-colors">Acessórios</a></li>
+          <li><a href="#servicos" class="hover:text-white transition-colors">Sob encomenda</a></li>
+          <li><a href="#faq"      class="hover:text-white transition-colors">Dúvidas frequentes</a></li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div>
+        <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-widest">Contato</h4>
+        <ul class="space-y-3 text-white/50 text-sm">
+          <li class="flex items-start gap-2">
+            <i class="fab fa-whatsapp text-wa mt-0.5 text-base"></i>
+            <a data-wa class="hover:text-white transition-colors">(81) 98240-7186</a>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-envelope text-accent mt-0.5"></i>
+            <span>mikaele105@icloud.com</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-location-dot text-accent mt-0.5"></i>
+            <span>Rua José Felipe Santiago, n150, Iputinga</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/35 text-xs">
+      <span>© <span id="year"></span> Mika Paixão Crochê — CPF: 101.448.984-97</span>
+      <span>Todos os direitos reservados.</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ══ WA FLOAT BUTTON ════════════════════════════════════ -->
+<a id="wa-float" href="#" target="_blank" rel="noopener noreferrer"
+   class="fixed bottom-5 right-5 z-[9999] w-14 h-14 bg-wa rounded-full flex items-center justify-center shadow-2xl shadow-green-900/40 hover:scale-110 transition-transform"
+   aria-label="Falar no WhatsApp" title="Fale conosco agora!">
+  <i class="fab fa-whatsapp text-white text-3xl"></i>
+</a>
+
+<!-- ══ CHATBOT WIDGET (builtin) ═══════════════════════════ -->
+<div id="chatbot" class="hidden z-[9998]">
+  <div class="bg-primary px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+        <i class="fas fa-yarn text-white text-xs"></i>
+      </div>
+      <div>
+        <div class="text-white font-semibold text-sm">Mika Paixão Crochê</div>
+        <div class="text-white/60 text-xs flex items-center gap-1">
+          <span class="w-1.5 h-1.5 bg-wa rounded-full inline-block"></span> Online agora
+        </div>
+      </div>
+    </div>
+    <button id="chatbot-close" class="text-white/60 hover:text-white transition-colors p-1" aria-label="Fechar chat">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div id="chatbot-body"></div>
+</div>
+
+<!-- ══ LIGHTBOX ═══════════════════════════════════════════ -->
+<div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-label="Visualizador de imagem">
+  <button id="lb-close" class="absolute top-4 right-4 text-white/70 hover:text-white text-2xl z-10" aria-label="Fechar">
+    <i class="fas fa-times"></i>
+  </button>
+  <button id="lb-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-2xl z-10 w-10 h-10 flex items-center justify-center" aria-label="Anterior">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <div class="flex flex-col items-center gap-3 max-w-[90vw]">
+    <img id="lb-img" src="" alt="" class="max-h-[80vh] max-w-full object-contain rounded-lg shadow-2xl">
+    <p id="lb-caption" class="text-white/70 text-sm"></p>
+  </div>
+  <button id="lb-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-2xl z-10 w-10 h-10 flex items-center justify-center" aria-label="Próxima">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
+

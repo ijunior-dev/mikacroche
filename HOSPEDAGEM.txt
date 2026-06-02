@@ -1,0 +1,17 @@
+HOSPEDAGEM
+Melhor combinação custo-benefício
+Vercel (hospedagem) + Supabase (banco se precisar) = gratuito para começar
+O chatbot simples você pode construir usando a API do Claude (a mesma IA que você está usando agora), pagando só pelo uso — sem mensalidade fixa.
+
+Custo real estimado para seu caso
+ItemCustoHospedagem VercelR$ 0 (gratuito)Domínio (.com.br)R$ 40 a R$ 60/anoAPI Claude (chatbot)~US$ 0,003 por mensagemTotal inicial~R$ 50/ano + uso do chat
+Com volume baixo (até algumas centenas de conversas por mês), o custo da API fica abaixo de US$ 5/mês.
+
+Como ficaria a stack
+Landing Page (Next.js ou HTML simples)
+        ↓
+    Vercel (hospedagem gratuita)
+        ↓
+  Chatbot via API Claude Haiku
+        ↓
+   Supabase (salvar histórico - gratuito)
