@@ -8,8 +8,6 @@ const SITE_CONFIG = {
     niche:   'Artesanato em crochê',
     city:    'Recife',
     state:   'PE',
-    cnpj:    '101.448.984-97',
-    address: 'Rua José Felipe Santiago, n150, Iputinga',
     email:   'mikaele105@icloud.com',
     phone:   '(81) 98240-7186',
   },
