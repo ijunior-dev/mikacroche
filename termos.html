@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso | Mika Paixão Crochê</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#2C1810', light: '#2C1810cc', dark: '#2C1810aa' },
+            accent:  '#C8845A',
+            wa:      '#25D366',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>body{background:#FBF7F2}</style>
+</head>
+<body class="font-sans text-primary">
+
+  <header class="bg-primary py-6">
+    <div class="max-w-3xl mx-auto px-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="images/logo_mika.jpeg" alt="Mika Paixão Crochê" class="w-9 h-9 rounded-lg object-cover"
+             onerror="this.style.display='none'">
+        <span class="font-black text-white text-lg">Mika Paixão Crochê</span>
+      </a>
+      <a href="index.html" class="text-white/60 hover:text-white text-sm transition-colors">
+        <i class="fas fa-arrow-left mr-1.5"></i>Voltar ao site
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-5 py-14">
+    <p class="text-accent font-bold text-xs uppercase tracking-widest mb-3">Termos de Uso</p>
+    <h1 class="text-3xl sm:text-4xl font-black mb-2">Termos de Uso</h1>
+    <p class="text-primary/50 text-sm mb-10">Última atualização: setembro de 2026</p>
+
+    <div class="space-y-8 text-primary/80 leading-relaxed">
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">1. Sobre este site</h2>
+        <p>Este site pertence a <strong>Mika Paixão Crochê</strong>, ateliê de crochê manual sediado em Recife, PE, que produz peças artesanais como amigurumis, itens de decoração, acessórios e presentes personalizados, feitos sob encomenda.</p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">2. Natureza do site</h2>
+        <p>Este site funciona como vitrine e portfólio digital. Ele não processa pagamentos nem finaliza pedidos diretamente — todo contato comercial, orçamento e fechamento de encomenda acontece por conversa direta pelo WhatsApp, a partir dos botões disponíveis no site.</p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">3. Peças sob encomenda</h2>
+        <p>Por serem feitas à mão, uma a uma, prazos de produção, disponibilidade de materiais e valores são combinados individualmente em cada conversa, e podem variar conforme a complexidade da peça. Fotos do site são ilustrativas — cada peça artesanal pode apresentar pequenas variações naturais do processo manual.</p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">4. Propriedade intelectual</h2>
+        <p>Textos, fotos e identidade visual deste site pertencem a Mika Paixão Crochê. Não é permitido copiar ou reutilizar esse conteúdo sem autorização.</p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">5. WhatsApp</h2>
+        <p>Ao clicar em qualquer botão de contato, você é direcionado para uma conversa no WhatsApp, fora deste site. Essa conversa é regida pelos termos e política de privacidade do próprio WhatsApp.</p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">6. Alterações</h2>
+        <p>Informações do site — preços de referência, prazos, disponibilidade de modelos — podem ser atualizadas a qualquer momento, sem aviso prévio. Estes Termos também podem ser revisados; a data no topo desta página indica a versão vigente.</p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">7. Legislação aplicável</h2>
+        <p>Este site é operado no Brasil e se rege pela legislação brasileira.</p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-lg text-primary mb-2">8. Contato</h2>
+        <p>Dúvidas sobre estes Termos: <a href="mailto:mikaele105@icloud.com" class="text-accent underline">mikaele105@icloud.com</a> ou pelo WhatsApp no site.</p>
+      </section>
+
+    </div>
+
+    <a href="privacidade.html" class="inline-flex items-center gap-2 mt-12 text-accent font-semibold hover:underline">
+      Ver Política de Privacidade <i class="fas fa-arrow-right text-sm"></i>
+    </a>
+  </main>
+
+  <footer class="bg-primary py-8 mt-10">
+    <div class="max-w-3xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/35 text-xs">
+      <span>© <span id="year"></span> Mika Paixão Crochê.</span>
+      <a href="index.html" class="hover:text-white transition-colors">Voltar ao site</a>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
