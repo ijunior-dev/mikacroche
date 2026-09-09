@@ -52,3 +52,7 @@ O site não pede CPF nem endereço completo de ninguém, nem do seu negócio, ne
 ## Contato de suporte técnico
 
 Qualquer dúvida sobre o funcionamento do site (não sobre seu negócio): fala com o Ivande.
+
+---
+
+*Deploy automático: qualquer atualização enviada pro repositório sobe sozinha em produção, sem passo manual extra.*
